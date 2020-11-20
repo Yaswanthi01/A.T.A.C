@@ -9,7 +9,7 @@ from patient_form_details.medical_details import MedicalDetails
 from patient_form_details.code_generation import CodeGeneration
 from patient_form_details.xray_details import XrayDetails
 from patient_form_details.output_generation import OutputGeneration
-
+# from patient_form_details.session_for_unique_code import SessionForUniqueCode
 app = Flask(__name__)
 app_root = os.path.abspath(os.path.dirname(__file__))
 
@@ -62,15 +62,29 @@ def output():
 	Calculations_output.get_data_from_medical_details()
 
 	# return redirect(url_for('output'))
-
+	cur = con.cursor()
 	# if request.method == "GET":
-	return render_template('output.html')
+	var = cur.execute("SELECT * FROM general_details WHERE ID = ?", (session['data'],))
+	for row in cur.fetchall():
+		gen_det = row
+	print(gen_det)
+	var = cur.execute("SELECT * FROM medical_details WHERE  unique_code= ?", (session['unique'],))
+	for row in cur.fetchall():
+		med_det = row
+	print(med_det)
+	path_to_photo =session['photo_path']
+	print(path_to_photo)
+
+
+
+	return render_template('user_report.html',gen_det=gen_det,med_det=med_det, path_to_photo=path_to_photo)
 
 
 @app.route('/unique_code_positive', methods=['GET', 'POST'])
 def unique_code_positive():
-
-	return render_template('unique_code_positive.html')
+	# session_for_unique_code = SessionForUniqueCode(con)
+	# code_unique = session['self.code_unique']
+	return render_template('unique_code_positive.html',code_unique=code_unique)
 
 
 @app.route('/unique_code_negative', methods=['GET', 'POST'])

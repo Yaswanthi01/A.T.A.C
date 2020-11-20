@@ -114,11 +114,11 @@ class OutputGeneration:
         print("Stored blob data into: ", filename, "\n")
 
     def read_blob_data(self):
-        photo_path = "C:/Users/yaswanthi/Documents/Github/A.T.A.C/xray_images\\" + session['unique'] + ".jpg"
+        session['photo_path'] = "C:/Users/yaswanthi/Documents/Github/A.T.A.C/xray_images\\" + session['unique'] + ".jpeg"
 
-        self.write_to_file(self.img, photo_path)
+        self.write_to_file(self.img, session['photo_path'])
 
-        return photo_path
+        return session['photo_path']
 
     def calling_keras(self, path_of_retrieved_image):
         # self.new_keras_model()

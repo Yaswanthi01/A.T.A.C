@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 app_root = os.path.abspath(os.path.dirname(__file__))
 
-db_path = r"C:\Users\Yaswanthi\Documents\GitHub\A.T.A.C\database\patient.db"
+db_path = r"C:\Users\anjuv\Documents\A.T.A.C\database\patient.db"
 
 con = lite.connect(db_path, check_same_thread=False)
 print("db connection successful")
@@ -103,14 +103,14 @@ def login():
 	return render_template('login.html')
 
 
-@app.route('/signin')
-def signin():
+@app.route('/signup')
+def signup():
 
-	return render_template('signin.html')
+	return render_template('signup.html')
 
 
 @app.route('/thankyou')
- def thankyou():
+def thankyou():
 
 	return render_template('thankyou.html')
 

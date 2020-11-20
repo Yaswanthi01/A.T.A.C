@@ -101,7 +101,7 @@ def signin():
 
 
 @app.route('/thankyou')
-def thankyou():
+ def thankyou():
 
 	return render_template('thankyou.html')
 

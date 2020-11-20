@@ -8,6 +8,7 @@ from patient_form_details.general_details_negative import GeneralDetailsNegative
 from patient_form_details.medical_details import MedicalDetails
 from patient_form_details.code_generation import CodeGeneration
 from patient_form_details.xray_details import XrayDetails
+from patient_form_details.output_generation import OutputGeneration
 
 app = Flask(__name__)
 app_root = os.path.abspath(os.path.dirname(__file__))
@@ -17,7 +18,7 @@ db_path = r"C:\Users\Yaswanthi\Documents\GitHub\A.T.A.C\database\patient.db"
 con = lite.connect(db_path, check_same_thread=False)
 print("db connection successful")
 
-
+app.secret_key = os.urandom(25)
 
 @app.route('/menu_for_forms_positive', methods=['GET', 'POST'])
 def menu_for_forms_positive():
@@ -57,6 +58,12 @@ def general_details_negative():
 
 @app.route('/output', methods=['GET', 'POST'])
 def output():
+	Calculations_output = OutputGeneration(con)
+	Calculations_output.get_data_from_medical_details()
+
+	# return redirect(url_for('output'))
+
+	# if request.method == "GET":
 	return render_template('output.html')
 
 

@@ -5,11 +5,6 @@ from flask import render_template, request, url_for, redirect, session, make_res
 
 
 
-@app.route('/negativedetails', methods=['GET', 'POST'])
-def negativedetails():
-	return render_template('coronacare.html')
-
-
 @app.route('/menu_for_forms_positive', methods=['GET', 'POST'])
 def menu_for_forms_positive():
 	return render_template('menu_for_forms_positive.html')

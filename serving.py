@@ -3,6 +3,11 @@ from flask import render_template, request, url_for, redirect, session, make_res
 import sqlite3 as lite
 import os
 
+from patient_form_details.general_details_positive import GeneralDetailsPositive
+from patient_form_details.general_details_negative import GeneralDetailsNegative
+from patient_form_details.medical_details import MedicalDetails
+from patient_form_details.code_generation import CodeGeneration
+from patient_form_details.xray_details import XrayDetails
 
 app = Flask(__name__)
 app_root = os.path.abspath(os.path.dirname(__file__))
@@ -26,12 +31,28 @@ def menu_for_forms_negative():
 
 @app.route('/general_details_positive', methods=['GET', 'POST'])
 def general_details_positive():
-	return render_template('general_details_positive.html')
+	if request.method == "POST":
+		Code_Generation = CodeGeneration()
+		General_Details_Positive = GeneralDetailsPositive(con)
+		positive_code = Code_Generation.positive_code()
+		General_Details_Positive.general_details_positive_input(positive_code)
 
+		return redirect(url_for('menu_for_forms_positive'))
+
+	if request.method == "GET":
+		return render_template('general_details_positive.html')
 
 @app.route('/general_details_negative', methods=['GET', 'POST'])
 def general_details_negative():
-	return render_template('general_details_negative.html')
+	if request.method == "POST":
+		Code_Generation = CodeGeneration()
+		General_Details_Negative = GeneralDetailsNegative(con)
+		negative_code = Code_Generation.negative_code()
+		General_Details_Negative.general_details_negative_input(negative_code)
+		return redirect(url_for('menu_for_forms_positive'))
+
+	if request.method == "GET":
+		return render_template('general_details_negative.html')
 
 
 @app.route('/output', methods=['GET', 'POST'])
@@ -53,13 +74,25 @@ def unique_code_negative():
 
 @app.route('/medical_details', methods=['GET', 'POST'])
 def medical_details():
-	return render_template('medical_details.html')
+	if request.method == "POST":
+		Medical_Details_Negative = MedicalDetails(con)
+		Medical_Details_Negative.medical_details_input()
+		return redirect(url_for('menu_for_forms_positive'))
+
+	if request.method == "GET":
+		return render_template('medical_details.html')
 
 
 @app.route('/xray_upload', methods=['GET', 'POST'])
 def xray_upload():
+	if request.method == "POST":
+		Xray_Details = XrayDetails(con)
+		Xray_Details.xray_input("unique_code", app_root)
 
-	return render_template('xray_upload.html')
+		return redirect(url_for('menu_for_forms_positive'))
+
+	if request.method == "GET":
+		return render_template('xray_upload.html')
 
 
 @app.route('/')
@@ -110,9 +143,11 @@ def signin():
 
 
 @app.route('/thankyou')
- def thankyou():
+def thankyou():
+	fname = request.args.get('fname')
+	lname = request.args.get('lname')
+	return render_template('thankyou.html', fname=fname, lname=lname)
 
-	return render_template('thankyou.html')
 
 @app.errorhandler(404)
 def page_not_found(e):

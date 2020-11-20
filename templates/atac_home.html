@@ -1,0 +1,26 @@
+{% extends "navbar.html" %}
+{% block content %}
+
+<br><br><br><br>
+<br><br><br><br>
+
+<pre>
+	<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+		<div class="btn-group mr-2" role="group" aria-label="First group">
+			<pre><pre><pre>
+			&emsp;&emsp;&emsp;<a class="btn btn-danger btn-lg" href="{{url_for('menu_for_forms_positive')}}"
+                                 role="button">Are you Corona positive?</a>
+			<pre><pre><pre>
+			</pre></pre></pre></pre></pre></pre>
+		</div>
+		<a>
+			<img class="img-responsive center-block paddingImg" src="{{ url_for('static', filename='pp.jpeg') }}" alt="logo.png">
+</a>
+			<pre><pre>
+		<div class="btn-group mr-2" role="group" aria-label="Second group">
+			&emsp;&emsp;<p style="text-indent:7em;"></p><pre>
+			<a class="btn btn-danger btn-lg" href="{{url_for('menu_for_forms_negative')}}" role="button">Do you want to take the Covid test?</a>
+		</pre></div>
+			</pre></pre></div>
+	</pre>
+{% endblock %}

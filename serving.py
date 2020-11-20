@@ -1,7 +1,16 @@
 from flask import Flask
 from flask import render_template, request, url_for, redirect, session, make_response, flash
+import sqlite3 as lite
+import os
 
 
+app = Flask(__name__)
+app_root = os.path.abspath(os.path.dirname(__file__))
+
+db_path = r"C:\Users\Yaswanthi\Documents\GitHub\A.T.A.C\database\patient.db"
+
+con = lite.connect(db_path, check_same_thread=False)
+print("db connection successful")
 
 
 

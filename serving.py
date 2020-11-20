@@ -65,7 +65,7 @@ def xray_upload():
 @app.route('/')
 def index():
 
-	return render_template('coronacare.html')
+	return render_template('atac_home.html')
 
 
 @app.route('/symptoms')

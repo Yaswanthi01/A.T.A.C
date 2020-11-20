@@ -1,0 +1,47 @@
+{% extends "navbar.html" %}
+{% block content %}
+<style>
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+<button class="btn btn-success" type="submit">Next</button>
+<p>
+  <a href="\general_details_positive">
+      <input class="btn btn-danger" type="button" value="General Details"/>
+     </a>
+</p>
+
+<br><br>
+<p>
+   <a href="\medical_details">
+      <input class="btn btn-danger" type="button" value="Medical Details"/>
+     </a>
+</p>
+
+<br><br>
+<p>
+   <a href="\xray_upload">
+      <input class="btn btn-danger" type="button" value="Xray Details"/>
+     </a>
+</p>
+
+<br><br><br>
+<form method = 'POST'>
+<p>
+  <a href="\output">
+      <input class="btn btn-danger"  type="button" value="Generate Report"/>
+     </a>
+</p>
+</form>
+
+
+{% endblock %}

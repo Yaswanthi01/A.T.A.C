@@ -13,7 +13,7 @@ from patient_form_details.output_generation import OutputGeneration
 app = Flask(__name__)
 app_root = os.path.abspath(os.path.dirname(__file__))
 
-db_path = r"C:\Users\anjuv\Documents\A.T.A.C\database\patient.db"
+db_path = r"C:\Users\yaswanthi\Documents\GitHub\A.T.A.C\database\patient.db"
 
 con = lite.connect(db_path, check_same_thread=False)
 print("db connection successful")
@@ -22,6 +22,8 @@ app.secret_key = os.urandom(25)
 
 @app.route('/menu_for_forms_positive', methods=['GET', 'POST'])
 def menu_for_forms_positive():
+
+
 	return render_template('menu_for_forms_positive.html')
 
 
@@ -35,8 +37,8 @@ def general_details_positive():
 	if request.method == "POST":
 		Code_Generation = CodeGeneration()
 		General_Details_Positive = GeneralDetailsPositive(con)
-		positive_code = Code_Generation.positive_code()
-		General_Details_Positive.general_details_positive_input(positive_code)
+		session['positive_code'] = Code_Generation.positive_code()
+		General_Details_Positive.general_details_positive_input(session['positive_code'])
 
 		return redirect(url_for('menu_for_forms_positive'))
 
@@ -77,20 +79,48 @@ def output():
 
 
 
+
 	return render_template('user_report.html',gen_det=gen_det,med_det=med_det, path_to_photo=path_to_photo)
 
 
 @app.route('/unique_code_positive', methods=['GET', 'POST'])
 def unique_code_positive():
-	# session_for_unique_code = SessionForUniqueCode(con)
-	# code_unique = session['self.code_unique']
-	return render_template('unique_code_positive.html',code_unique=code_unique)
+	cur = con.cursor()
+
+	cursor = cur.execute('SELECT max(id) FROM general_details')
+	max_id = cursor.fetchone()[0]
+	print(max_id)
+	str_id = str(max_id)
+
+	var = cur.execute("SELECT unique_code FROM general_details WHERE ID = ? ", (str_id,))
+	for row in cur.fetchone():
+		session['code_unique'] = row
+	code_unique_new = session['code_unique']
+	print(code_unique_new)
+
+	return render_template('unique_code_positive.html',code_unique_new=code_unique_new)
 
 
 @app.route('/unique_code_negative', methods=['GET', 'POST'])
 def unique_code_negative():
+	cur = con.cursor()
 
-	return render_template('unique_code_negative.html')
+	cursor = cur.execute('SELECT max(id) FROM general_details')
+	max_id = cursor.fetchone()[0]
+	print(max_id)
+	str_id = str(max_id)
+
+	var = cur.execute("SELECT unique_code FROM general_details WHERE ID = ? ", (str_id,))
+	for row in cur.fetchone():
+		session['code_unique'] = row
+	code_unique_new = session['code_unique']
+	print(code_unique_new)
+
+
+	return render_template('unique_code_negative.html', code_unique_new=code_unique_new)
+
+
+
 
 
 @app.route('/medical_details', methods=['GET', 'POST'])

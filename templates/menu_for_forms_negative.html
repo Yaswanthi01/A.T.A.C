@@ -1,33 +1,38 @@
 {% extends "navbar.html" %}
 {% block content %}
+<style>
+.container{
+    max-width: 700px;
+    margin:auto;
+    text-align:center;
+    }
+</style>
 <link rel="stylesheet" href="../static/coronacarecss.css">
 
-<br>
+<br><br><br><br>
 <div class="container">
-   <a href="\general_details_negative">
-      <input class="btn btn-danger" type="button" value="General Details"/>
+   <a href="\general_details_negative" class="btn btn-danger" role="button"  style="width:400px; height:50px">General Details
      </a>
 
-<br><br><br>
-<p>
-    <a href="\medical_details">
-      <input class="btn btn-danger" type="button" value="Medical Details"/>
-     </a>
-</p>
+<br><br><br><br>
 
-<br><br><br>
-<p>
-    <a href="\xray_upload">
-      <input class="btn btn-danger" type="button" value="Xray Details"/>
-     </a>
-</p>
+    <a href="\medical_details" class="btn btn-danger" role="button" style="width:400px;height:50px">Medical Details
+<!--      <input class="btn btn-danger" type="button" value="Medical Details style="width:400px, height:50px"/>-->
+   </a>
 
-<br><br><br>
-<p>
-    <a href="\menu_for_forms_negative">
-      <input class="btn btn-danger" type="button" value="Generate Report"/>
+
+<br><br><br><br>
+
+    <a href="\xray_upload" class="btn btn-danger" role="button" style="width:400px;height:50px">Xray Details
+<!--      <input class="btn btn-danger" type="button" value="Xray Details"/>-->
      </a>
-</p>
+
+
+<br><br><br><br>
+
+    <a href="\output" class="btn btn-danger" style="width:400px;height:50px" role="button">Generate Report
+     </a>
+
 
 </div>
 {% endblock %}

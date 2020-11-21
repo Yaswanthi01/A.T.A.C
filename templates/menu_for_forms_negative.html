@@ -2,24 +2,16 @@
 {% block content %}
 <link rel="stylesheet" href="../static/coronacarecss.css">
 <style>
-.column {
-  float: left;
-  width: 50%;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.container {
+   margin:0 auto; /* this will center the page */
+   width:960px; /*  use your width here */
 }
 </style>
-
-
+<br>
+<div class="container">
    <a href="\general_details_negative">
       <input class="btn btn-danger" type="button" value="General Details"/>
      </a>
-</p>
 
 <br><br>
 <p>
@@ -42,6 +34,6 @@
      </a>
 </p>
 
-
+</div>
 {% endblock %}
 

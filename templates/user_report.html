@@ -21,34 +21,45 @@ p {
 <body>
 <div class="jumbotron">
     <h3 class="display-5" style="text-align:center">Report</h3>
-    <h5>Unique code : </h5>
-    <h5>General Information :</h5>
+<!--    <h5>&ensp;&ensp;Unique code : </h5>-->
+<!--    <h5>&ensp;&ensp;General Information :</h5>-->
     <br>
-    <div class="row">
-        <div class="col-4">
-            <p>Name : </p><br>
-            <p>Age : </p><br>
-            <p>Gender : </p><br>
+     <div class="row",align="left">
+         <h5>&ensp;&ensp;&ensp;&ensp;Unique code : </h5>
+     </div>
+    <div class="row",align="left">
+        <h5>&ensp;&ensp;&ensp;&ensp;General Information :</h5>
+
+    </div>
+
+    <div class="row",align="left">
+        <div class="col-4",align="left">
+            <p>Name : {{ gen_det[2] }}</p><br>
+            <p>Age : {{ gen_det[3] }}</p><br>
+            <p>Gender : {{ gen_det[4] }}</p><br>
         </div>
-        <div class="col-6">
-             <p>Phone Number : </p><br>
-             <p>Address : </p><br>
-             <p>Adhaar Number : </p><br>
+        <div class="col-6",align="left">
+             <p>Phone Number : {{ gen_det[5] }} </p><br>
+             <p>Address : {{ gen_det[6] }} </p><br>
+             <p>Adhaar Number : {{ gen_det[7] }}</p><br>
         </div>
-        </div>
+    </div>
     <br><br>
         <h5>Medical Information :</h5>
     <div class="row">
         <div class="col-4">
             <br>
-                <p>Temperature : {{ temp }}</p><br>
-                <p>Oximeter Reading : {{ oxymeter }}</p><br>
-                <p>FEV : {{ spiro_fec }}</p><br>
-                <p>FVC : {{ spiro_fvc }}</p><br>
+                <p>Temperature : {{ med_det[1] }}</p><br>
+                <p>Oximeter Reading : {{ med_det[2] }}</p><br>
+                <p>FEV : {{ med_det[3] }}</p><br>
+                <p>FVC : {{ med_det[4] }}</p><br>
             </div>
             <div class="col-6">
+                <div>
                 <br>
                 <p>Chest X-Ray : </p><br>
+                <img class="img-responsive center-block paddingImg" src = "../images/unique_code.jpeg"  alt = "xray" width="30" height="30">
+                </div>
             </div>
         </div>
 

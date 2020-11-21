@@ -1,5 +1,7 @@
 import numpy as np
+
 import tensorflow.keras
+
 from PIL import Image, ImageOps
 from flask import session
 from tensorflow.keras.preprocessing.image import load_img

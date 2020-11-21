@@ -1,21 +1,9 @@
 {% extends "navbar.html" %}
 {% block content %}
 <link rel="stylesheet" href="../static/coronacarecss.css">
-<style>
-.column {
-  float: left;
-  width: 50%;
-}
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-</style>
-<button class="btn btn-success" type="submit">Next</button>
-<p>
+<br>
+<div class="container">
   <a href="\general_details_positive">
       <input class="btn btn-danger" type="button" value="General Details"/>
      </a>
@@ -43,6 +31,6 @@
      </a>
 </p>
 </form>
-
+</div>
 
 {% endblock %}

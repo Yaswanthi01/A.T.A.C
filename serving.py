@@ -52,7 +52,7 @@ def general_details_negative():
 		General_Details_Negative = GeneralDetailsNegative(con)
 		negative_code = Code_Generation.negative_code()
 		General_Details_Negative.general_details_negative_input(negative_code)
-		return redirect(url_for('menu_for_forms_positive'))
+		return redirect(url_for('menu_for_forms_negative'))
 
 	if request.method == "GET":
 		return render_template('general_details_negative.html')
@@ -106,19 +106,25 @@ def output():
 @app.route('/unique_code_positive', methods=['GET', 'POST'])
 def unique_code_positive():
 	cur = con.cursor()
+	ans =con.insert_id()
+	print (ans)
+	print(cur.lastrowid)
 
-	cursor = cur.execute('SELECT max(id) FROM general_details')
-	max_id = cursor.fetchone()[0]
-	print(max_id)
-	str_id = str(max_id)
 
-	var = cur.execute("SELECT unique_code FROM general_details WHERE ID = ? ", (str_id,))
-	for row in cur.fetchone():
-		session['code_unique'] = row
-	code_unique_new = session['code_unique']
-	print(code_unique_new)
+	#
+	# cursor = cur.execute('SELECT max(id) FROM general_details')
+	# max_id = cursor.fetchone()[0]
+	# print(max_id)
+	# str_id = str(max_id)
+	#
+	# var = cur.execute("SELECT unique_code FROM general_details WHERE ID = ? ", (str_id,))
+	# for row in cur.fetchone():
+	# 	session['code_unique'] = row
+	# code_unique_new_pos = session['code_unique']
+	# print(code_unique_new_pos)
 
-	return render_template('unique_code_positive.html',code_unique_new=code_unique_new)
+	return render_template('unique_code_positive.html')
+# ,code_unique_new=code_unique_new_pos
 
 
 @app.route('/unique_code_negative', methods=['GET', 'POST'])
@@ -133,11 +139,11 @@ def unique_code_negative():
 	var = cur.execute("SELECT unique_code FROM general_details WHERE ID = ? ", (str_id,))
 	for row in cur.fetchone():
 		session['code_unique'] = row
-	code_unique_new = session['code_unique']
-	print(code_unique_new)
+	code_unique_new_neg = session['code_unique']
+	print(code_unique_new_neg)
 
 
-	return render_template('unique_code_negative.html', code_unique_new=code_unique_new)
+	return render_template('unique_code_negative.html', code_unique_new=code_unique_new_neg)
 
 
 

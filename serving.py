@@ -36,7 +36,7 @@ def general_details_negative():
 
 @app.route('/output', methods=['GET', 'POST'])
 def output():
-	return render_template('output.html')
+	return render_template('user_report.html')
 
 
 @app.route('/unique_code_positive', methods=['GET', 'POST'])

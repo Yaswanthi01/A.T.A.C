@@ -22,7 +22,6 @@ class GeneralDetailsPositive:
         self.adhaar = request.form.get('adhaar')
         self.positive_code = positive_code
         self.session_for_general_details_positive(self.positive_code)
-        return session['unique']
 
     def session_for_general_details_positive(self, positive_code):
         session['listOfVariable'] = {}

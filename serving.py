@@ -70,17 +70,37 @@ def output():
 	for row in cur.fetchall():
 		gen_det = row
 	print(gen_det)
-	var = cur.execute("SELECT * FROM medical_details WHERE  unique_code= ?", (session['unique'],))
+
+	cursor = cur.execute('SELECT max(id) FROM general_details')
+	max_id = cursor.fetchone()[0]
+	print(max_id)
+	str_id = str(max_id)
+
+	var = cur.execute("SELECT unique_code FROM general_details WHERE ID = ? ", (str_id,))
+	for row in cur.fetchone():
+		session['code_unique'] = row
+	code_unique_new = session['code_unique']
+	print(code_unique_new)
+
+	var = cur.execute("SELECT * FROM medical_details WHERE  unique_code= ?", (code_unique_new,))
 	for row in cur.fetchall():
 		med_det = row
+
 	print(med_det)
 	path_to_photo =session['photo_path']
 	print(path_to_photo)
 
 
 
+	var = cur.execute("SELECT * FROM output WHERE unique_code = ?", (code_unique_new,))
+	for row in cur.fetchall():
+		output_det = row
+	print(output_det)
 
-	return render_template('user_report.html',gen_det=gen_det,med_det=med_det, path_to_photo=path_to_photo)
+
+
+
+	return render_template('user_report.html',gen_det=gen_det,med_det=med_det, path_to_photo=path_to_photo,output_det=output_det)
 
 
 @app.route('/unique_code_positive', methods=['GET', 'POST'])

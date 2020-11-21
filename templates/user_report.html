@@ -65,6 +65,68 @@ p {
 
 <br>
     <h5>Medical Condition Details : </h5><br>
+    <p align = left>
+<!--        OOOOP-->
+        {% if output_det[1] == 0 and output_det[2] == 0 and output_det[3] == 0 and output_det[4] == 0 and output_det[0][-1] == 'N' -%}
+            Based on the results obtained from the above performed tests, your temperature is stable and perfect.<br>
+		Your oximeter readings and spirometer reading are promisingly good.<br>
+		The chest X-Ray shows that there are no fluids filled in the lungs area. <br>
+		There is nothing to worry about.<br>
+		Staying in home quarantine should be fine  : )
+        {% endif %}
+<!--0000N-->
+        {% if output_det[1] == 0 and output_det[2] == 0 and output_det[3] == 0 and output_det[4] == 0 and output_det[0][-1] == 'P' -%}
+            Based on the results obtained from the above performed tests, your temperature is stable and perfect.<br>
+		Your oximeter readings and spirometer reading are promisingly good.<br>
+		The chest X-Ray shows that there are no fluids filled in the lungs area. <br>
+		You do not have any serious symptoms and therefore have a very mild case of the coronavirus. <br>
+		There is nothing to worry about.<br>
+		Staying in home quarantine should be fine  : )
+        {% endif %}
+
+
+
+
+<!--        {% if output_det[1] == 1 and output_det[2] == 0 -%}-->
+<!--            although you body temperature seems high , your oximeter readings look fine . you might not be having a severe condition-->
+<!--        {% endif %}-->
+<!--        {% if output_det[1] == 0 and output_det[2] == 0 -%}-->
+<!--            your body temperature and oximeter readings seem fine .-->
+<!--        {% endif %}-->
+<!--        {% if output_det[2] == 1 and output_det[3] == 1 -%}-->
+<!--            your spirometer ratio readings also seem lower than usual .-->
+<!--        {% endif %}-->
+<!--        {% if output_det[2] == 0 and output_det[3] == 1 -%}-->
+<!--            your spirometer readings seem lower than usual .-->
+<!--        {% endif %}-->
+<!--        {% if output_det[2] == 1 and output_det[3] == 0 -%}-->
+<!--            your spirometer readings seem alright .-->
+<!--        {% endif %}-->
+<!--        {% if output_det[2] == 0 and output_det[3] == 0 -%}-->
+<!--            your spirometer readings seem alright , no problems detected.-->
+<!--        {% endif %}-->
+<!--        {% if output_det[3] == 0 and output_det[4] == 0 -%}-->
+<!--            your x ray readings are perfect . nothing to worry about-->
+<!--        {% endif %}-->
+<!--        {% if output_det[3] == 0 and output_det[4] == 1 -%}-->
+<!--            your x ray results show a bit of a pneumonic condition , we suggest you to check in with a doctor  for further analysis.-->
+<!--        {% endif %}-->
+<!--        {% if output_det[3] == 1 and output_det[4] == 1 -%}-->
+<!--            you seem to be having quite a severe case . your x ray reports show a high pneumonic condition in the lungs .we recommend you to admit yourself in a hospital in your locality as soon as possible .-->
+<!--        {% endif %}-->
+<!--        {% if output_det[3] == 1 and output_det[4] == 0 -%}-->
+<!--            although your spirometer ratios were pretty low , your xray depicts that your Lungs are at a good condition . However you must take caution and take care .-->
+<!--        {% endif %}-->
+
+
+
+
+
+
+
+
+
+    </p>
     <h5>Precautions : </h5><br>
     <h5>Result : </h5><br>
 </div>

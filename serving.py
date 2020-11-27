@@ -23,7 +23,6 @@ app.secret_key = os.urandom(25)
 @app.route('/menu_for_forms_positive', methods=['GET', 'POST'])
 def menu_for_forms_positive():
 
-
 	return render_template('menu_for_forms_positive.html')
 
 
@@ -35,7 +34,7 @@ def menu_for_forms_negative():
 @app.route('/general_details_positive', methods=['GET', 'POST'])
 def general_details_positive():
     if request.method == "POST":
-		Code_Generation = CodeGeneration()
+	    Code_Generation = CodeGeneration()
         General_Details_Positive = GeneralDetailsPositive(con)
         session['positive_code'] = Code_Generation.positive_code()
         General_Details_Positive.general_details_positive_input(session['positive_code'])

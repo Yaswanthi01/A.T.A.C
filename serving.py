@@ -13,7 +13,7 @@ from patient_form_details.output_generation import OutputGeneration
 app = Flask(__name__)
 app_root = os.path.abspath(os.path.dirname(__file__))
 
-db_path = r"C:\Users\yaswanthi\Documents\GitHub\A.T.A.C\database\patient.db"
+db_path = r"C:\Users\anjuv\Documents\A.T.A.C\database\patient.db"
 
 con = lite.connect(db_path, check_same_thread=False)
 print("db connection successful")

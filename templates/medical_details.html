@@ -2,21 +2,14 @@
 {% block content %}
 <link rel="stylesheet" href="../static/coronacarecss.css">
 <style>
-.column {
-  float: left;
-  width: 50%;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.jumbotron{
+max-width:700px;
+margin:auto;
 }
 
 
 </style>
-<br>
+
 <div class="jumbotron">
     <h3 class="display-5" style="text-align:center">ENTER YOUR DETAILS</h3>
     <h7 style="text-align:center" class="form-text text-muted">Fill out this form</h7>
@@ -29,7 +22,7 @@
         <div class="row">
 
             <div class="column ">
-                &emsp;&emsp;&emsp;<label for="temp">Enter your Temperature:</label>
+                &emsp;&emsp;&emsp;<label for="temp">&emsp;&emsp;Temperature:</label>
                 &emsp;<input class="lead" type="number" id="temp" name="temp" value="" placeholder="Temperature">
                 <br><br>
                 &emsp;&emsp;&emsp;<label for="oxymeter">Oximeter Reading:</label>

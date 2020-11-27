@@ -37,8 +37,8 @@ def general_details_positive():
     if request.method == "POST":
 		Code_Generation = CodeGeneration()
         General_Details_Positive = GeneralDetailsPositive(con)
-		session['positive_code'] = Code_Generation.positive_code()
-		General_Details_Positive.general_details_positive_input(session['positive_code'])
+        session['positive_code'] = Code_Generation.positive_code()
+        General_Details_Positive.general_details_positive_input(session['positive_code'])
 
 		return redirect(url_for('menu_for_forms_positive'))
 

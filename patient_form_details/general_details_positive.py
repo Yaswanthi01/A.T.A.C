@@ -2,7 +2,7 @@ from flask import request, session
 
 
 class GeneralDetailsPositive:
-    def __init__(self, dbconnection):
+    def __init__(self, dbconnection) -> object:
         self.con = dbconnection
         self.name = None
         self.age = None

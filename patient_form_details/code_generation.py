@@ -3,7 +3,7 @@ import string
 
 class CodeGeneration:
 
-    def __init__(self):
+    def __init__(self) -> object:
         # self.con = dbconnection
         # self.request = request
         # self.mail = mail
@@ -14,6 +14,7 @@ class CodeGeneration:
 
     def ran_gen(self, size, chars=string.ascii_uppercase + string.digits):
         return ''.join(random.choice(chars) for x in range(size))
+
 
     def positive_code(self):
         self.a = self.ran_gen(6, "13456789AXCNMLERTSJHERTFGBVEKIASDDYYZZWJHGFREWSDFVBMJ5679SQJH")

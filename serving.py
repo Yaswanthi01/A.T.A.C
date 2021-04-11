@@ -9,6 +9,7 @@ from patient_form_details.medical_details import MedicalDetails
 from patient_form_details.code_generation import CodeGeneration
 from patient_form_details.xray_details import XrayDetails
 from patient_form_details.output_generation import OutputGeneration
+
 # from patient_form_details.session_for_unique_code import SessionForUniqueCode
 app = Flask(__name__)
 app_root = os.path.abspath(os.path.dirname(__file__))
@@ -20,9 +21,9 @@ print("db connection successful")
 
 app.secret_key = os.urandom(25)
 
+
 @app.route('/menu_for_forms_positive', methods=['GET', 'POST'])
 def menu_for_forms_positive():
-
     return render_template('menu_for_forms_positive.html')
 
 
@@ -43,6 +44,7 @@ def general_details_positive():
 
     if request.method == "GET":
         return render_template('general_details_positive.html')
+
 
 @app.route('/general_details_negative', methods=['GET', 'POST'])
 def general_details_negative():
@@ -86,29 +88,24 @@ def output():
         med_det = row
 
     print(med_det)
-    path_to_photo =session['photo_path']
+    path_to_photo = session['photo_path']
     print(path_to_photo)
-
-
 
     var = cur.execute("SELECT * FROM output WHERE unique_code = ?", (code_unique_new,))
     for row in cur.fetchall():
         output_det = row
     print(output_det)
 
-
-
-
-    return render_template('user_report.html',gen_det=gen_det,med_det=med_det, path_to_photo=path_to_photo,output_det=output_det)
+    return render_template('user_report.html', gen_det=gen_det, med_det=med_det, path_to_photo=path_to_photo,
+                           output_det=output_det)
 
 
 @app.route('/unique_code_positive', methods=['GET', 'POST'])
 def unique_code_positive():
     cur = con.cursor()
-    ans =con.insert_id()
-    print (ans)
+    ans = con.insert_id()
+    print(ans)
     print(cur.lastrowid)
-
 
     #
     # cursor = cur.execute('SELECT max(id) FROM general_details')
@@ -123,6 +120,8 @@ def unique_code_positive():
     # print(code_unique_new_pos)
 
     return render_template('unique_code_positive.html')
+
+
 # ,code_unique_new=code_unique_new_pos
 
 
@@ -141,11 +140,7 @@ def unique_code_negative():
     code_unique_new_neg = session['code_unique']
     print(code_unique_new_neg)
 
-
     return render_template('unique_code_negative.html', code_unique_new=code_unique_new_neg)
-
-
-
 
 
 @app.route('/medical_details', methods=['GET', 'POST'])
@@ -173,8 +168,7 @@ def xray_upload():
 
 @app.route('/')
 def index():
-
-    return render_template('index.html')
+    return render_template('navbar2.html')
 
 
 @app.route('/symptoms')
@@ -218,10 +212,8 @@ def thankyou():
     lname = request.args.get('lname')
     return render_template('thankyou.html', fname=fname, lname=lname)
 
-
-
 @app.errorhandler(404)
-def page_not_found(e):
+def page_not_found():
     return render_template('404.html'), 404
 
 
